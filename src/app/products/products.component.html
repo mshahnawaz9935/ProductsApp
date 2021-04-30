@@ -10,6 +10,7 @@
                 </div>
                 <div class="col-3">
                     <a class="btn btn-primary" routerLink="/cart">{{CartService.cartItems.length}} items in Cart</a>
+                    &nbsp;&nbsp;<a href="#" class="btn btn-primary" (click)="clearCart()">Clear</a>
                 </div>
                 
             </div>
@@ -22,6 +23,7 @@
                 <br />
                 <br />
                 <a href="#" class="btn btn-primary" (click)="addToCart(p)">Add to Cart</a>
+              
               </div>
              
           </div>

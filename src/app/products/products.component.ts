@@ -34,4 +34,9 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  clearCart()
+  {
+    this.CartService.cartItems = [];
+  }
+
 }
