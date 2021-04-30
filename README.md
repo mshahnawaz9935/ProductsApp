@@ -1,5 +1,6 @@
 # ProductsApp
 
+Cart and Products ( Angular 11). Simple product and cart functionality
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
 ## Development server
