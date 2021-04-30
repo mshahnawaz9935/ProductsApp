@@ -1,7 +1,7 @@
 import { visitAll } from '@angular/compiler/src/render3/r3_ast';
 import { createDirectiveTypeParams } from '@angular/compiler/src/render3/view/compiler';
 import { Component, OnInit } from '@angular/core';
-import { AddToCartServiceService} from '../add-to-cart.service';
+import { AddToCartService} from '../add-to-cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,11 +13,9 @@ export class CartComponent implements OnInit {
   finalItems: any =[];
   totalPrice: number = 0;
   
-
-  constructor(public CartService : AddToCartServiceService) {
+  constructor(public CartService : AddToCartService) {
 
     let counts = {};
-
    CartService.cartItems.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
 
    for(var i = 0 ; i < CartService.products.length;i++)
@@ -25,7 +23,10 @@ export class CartComponent implements OnInit {
      var item = CartService.products[i];
      item.quantity = counts[item.id];
      if(item.quantity == undefined)
-     item.quantity = 0;
+     {
+        item.quantity = 0;
+        continue;
+     }
      if(item.quantity >= 3)
      this.totalPrice = this.totalPrice + (item.quantity - 1) * item.price ;
      else    this.totalPrice = this.totalPrice + (item.quantity) * item.price ;
@@ -37,17 +38,14 @@ export class CartComponent implements OnInit {
   }
   deleteItems(item)
   {
-    console.log(item);
     var index = this.finalItems.indexOf(item);
     this.finalItems.splice(index, 1);
     if(item.quantity >= 3)
     this.totalPrice = this.totalPrice - (item.price * (item.quantity - 1));
     else  this.totalPrice = this.totalPrice - (item.price * item.quantity);
+  //  this.finalItems[index].quantity = 0;
     while(this.CartService.cartItems.indexOf(item.id) != -1)
-    {
       this.CartService.cartItems.splice(this.CartService.cartItems.indexOf(item.id) , 1);
-
-    }
   }
 
 }

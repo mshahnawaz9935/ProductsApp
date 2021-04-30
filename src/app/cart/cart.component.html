@@ -1,7 +1,6 @@
 <div class="container">
    
     <div class="card" style="height:75vh">
-      
         <div class="card-body">
             <div class="row">
                 <div class="col-6">
@@ -11,7 +10,7 @@
             <div class="row">
                 <div class="col-12">
                     
-                    <table style="width:100%">
+                    <table *ngIf="finalItems.length > 0" style="width:100%">
                         <tr>
                         <th>Name</th>
                         <th>Description</th> 
@@ -28,25 +27,23 @@
                                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                               </svg></td>
                         </tr>
-                      
                     </table>
-                  
+                    <h4 *ngIf="finalItems.length == 0">No items in cart.</h4>
                 </div>
             </div>
             <br />
-            <div class="row">
+            <div class="row" >
                 <div class="col-12">
-                    Discount applied. ( Buy 3 Get one free)
+                    <h5 *ngIf="finalItems.length > 0"> Discount applied. ( Buy 3 Get one free)</h5>
+                    <h5 *ngIf="finalItems.length == 0"> Special Offer. ( Buy 3 Get one free)</h5>
                  </div> 
-              
-                     <div class="col-9">
-                        Price
-                     </div> 
-                     <div class="col-3">
+                <div class="col-9">
+                        Total Price
+                </div> 
+                <div class="col-3">
                          {{totalPrice | currency:'EUR'}}
-                    </div>  
+                </div>  
             </div>
-         
         </div>
       </div>
 </div>

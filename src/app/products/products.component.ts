@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddToCartServiceService} from '../add-to-cart.service';
+import { AddToCartService} from '../add-to-cart.service';
 
 @Component({
   selector: 'app-products',
@@ -12,14 +12,10 @@ export class ProductsComponent implements OnInit {
   alert : boolean = false;
   results : string = "";
 
-
-  constructor(public CartService : AddToCartServiceService) {
-    
+  constructor(public CartService : AddToCartService) {
    }
 
   ngOnInit(): void {
-
-   
   }
 
   addToCart(product)
